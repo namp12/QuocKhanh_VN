@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kỷ niệm Quốc khánh 2-9 | Việt Nam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="threeRoot" aria-hidden="true"></div>
+    <header class="hero">
+        <h1>Chào mừng Quốc khánh 2-9</h1>
+        <p class="subtitle">Việt Nam muôn năm!</p>
+    </header>
+
+    <main class="container">
+        <section class="flag-section">
+            <div class="pole" aria-hidden="true"></div>
+            <div class="flag" aria-label="Cờ đỏ sao vàng Việt Nam" role="img">
+                <!-- SVG lá cờ Việt Nam -->
+                <svg class="flag-svg" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+                    <!-- Nền đỏ -->
+                    <rect width="300" height="200" fill="#da251d"></rect>
+                    <!-- Sao vàng -->
+                    <g transform="translate(150,100)">
+                        <polygon fill="#ffde00" points="0,-50 14.43,-15.45 47.55,-15.45 20.56,5.9 29.39,38.2 0,20 -29.39,38.2 -20.56,5.9 -47.55,-15.45 -14.43,-15.45"/>
+                    </g>
+                    <!-- Filter để tạo hiệu ứng bay -->
+                    <defs>
+                        <filter id="wave" x="-20%" y="-20%" width="140%" height="140%">
+                            <feTurbulence id="noiseNode" type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="2" seed="2" result="noise"/>
+                            <feDisplacementMap id="dispNode" in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+
+        <section class="controls" aria-label="Điều khiển âm thanh">
+            <div class="controls-row">
+                <button id="playBtn" class="btn" aria-label="Phát Quốc ca">Phát Quốc ca</button>
+                <button id="pauseBtn" class="btn btn-secondary" aria-label="Tạm dừng">Tạm dừng</button>
+            </div>
+            <div class="controls-row">
+                <span id="currentTime" class="time">0:00</span>
+                <input id="seekRange" class="range" type="range" min="0" max="100" value="0" step="0.1" aria-label="Tua bài hát">
+                <span id="duration" class="time">0:00</span>
+            </div>
+            <div class="controls-row">
+                <label for="volumeRange" class="label">Âm lượng</label>
+                <input id="volumeRange" class="range" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Âm lượng">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>Độc Lập - Tự Do - Hạnh phúc</span>
+    </footer>
+
+    <audio id="anthem" preload="auto">
+        <!-- Đặt tệp mp3 của Quốc ca vào assets/anthem.mp3 -->
+        <source src="assets/Quốc Ca Việt Nam.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ âm thanh.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/loaders/FontLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/geometries/TextGeometry.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
